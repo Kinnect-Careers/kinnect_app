@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user_id: 1
-  opportunity_id: 1
+app1:
+  user: :user1
+  opportunity: :opp1
 
-two:
-  user_id: 1
-  opportunity_id: 1
+app2:
+  user: :user2
+  opportunity_id: :opp2 

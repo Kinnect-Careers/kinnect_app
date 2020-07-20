@@ -2,7 +2,7 @@ require 'test_helper'
 
 class OpportunitiesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @opportunity = opportunities(:one)
+    @opportunity = opportunities(:opp1)
   end
 
   test "should get index" do
@@ -17,10 +17,19 @@ class OpportunitiesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create opportunity" do
     assert_difference('Opportunity.count') do
-      post opportunities_url, params: { opportunity: { company_id: @opportunity.company_id, description: @opportunity.description, requirements: @opportunity.requirements, tasks: @opportunity.tasks, title: @opportunity.title } }
+      post opportunities_url, 
+        params: { 
+          opportunity: {
+            title: @opportunity.title,
+            description: @opportunity.description,
+            tasks: @opportunity.tasks,
+            requirements: @opportunity.requirements,
+            company_id: companies(:company2).id
+          }
+        }
     end
 
-    assert_redirected_to opportunity_url(Opportunity.last)
+    assert_redirected_to opportunity_url(Opportunity.last), "Should edirected to last opportunity URL #{Opportunity.last}"
   end
 
   test "should show opportunity" do
