@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ApplicationsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @application = applications(:one)
+    @application = applications(:app1)
   end
 
   test "should get index" do
