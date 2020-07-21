@@ -5,8 +5,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     @user = User.create(
       name: "User Unanimus", 
       email: "mre@example.com",
-      password: "foolfool",
-      password_confirmation: "foolfool"
+      password: "Fool!fool5",
+      password_confirmation: "Fool!fool5"
     )
   end
 
@@ -23,7 +23,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test "should create user" do
     assert_difference('User.count') do
       post users_url, params: {
-        user: { email: "new@new.com", name: @user.name, password: "lalalala", password_confirmation: "lalalala" }
+        user: { email: "new@new.com", name: @user.name, password: "%laLalala123", password_confirmation: "%laLalala123" }
       }
     end
 

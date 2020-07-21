@@ -4,18 +4,11 @@ class ApplicationsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @opportunity = opportunities(:opp1)
     @another_opp = opportunities(:opp2)
-    @user = User.create(
-      name: "USER USER", 
-      email: "user@example.com",
-      password: "foolfool",
-      password_confirmation: "foolfool"
-    )
-    
+    @user = users(:user1)
     @application = Application.create(
       opportunity: @opportunity, 
       user: @user
     )
-    
   end
 
   test "should get index" do
@@ -47,13 +40,7 @@ class ApplicationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update application" do
-    another_user = User.create(
-      name: "ANOTHER USER", 
-      email: "anotheruser@example.com",
-      password: "foolfool",
-      password_confirmation: "foolfool"
-    )
-    patch application_url(@application), params: { application: { opportunity: @opportunity, user: another_user} }
+    patch application_url(@application), params: { application: { opportunity: @opportunity, user: users(:user2)} }
     assert_redirected_to application_url(@application)
   end
 

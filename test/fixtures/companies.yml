@@ -4,8 +4,10 @@ company1:
   name: brand1
   email: brand1@brand1.com
   image_url: brand1.jpg
+  password_digest: jalsjkdilkajsdkljaklsdjilasjd
 
 company2:
   name: brand2
   email: brand2@brand2.com
   image_url: brand2.jpg
+  password_digest: jalsjkdilkajsdkljaklsdjilasjd

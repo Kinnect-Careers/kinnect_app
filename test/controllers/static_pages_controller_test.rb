@@ -2,7 +2,7 @@ require 'test_helper'
 
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   def setup
-    @base_title = "Kinnect Carrers"
+    @base_title = "Kinnect Careers"
   end
 
   test "should get contact" do
