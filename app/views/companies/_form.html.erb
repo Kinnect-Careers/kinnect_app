@@ -1,7 +1,7 @@
 <%= form_with(model: company, local: true) do |form| %>
   <% if company.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
+    <div class="alert alert-warning" role="alert">
+      <h2><%= pluralize(company.errors.count, "error") %> prohibited this company profile from being created:</h2>
 
       <ul>
         <% company.errors.full_messages.each do |message| %>
@@ -24,6 +24,16 @@
   <div class="field">
     <%= form.label :image_url %>
     <%= form.text_field :image_url %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.text_field :password %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :password_confirmation %>
+    <%= form.text_field :password_confirmation %>
   </div>
 
   <div class="actions">

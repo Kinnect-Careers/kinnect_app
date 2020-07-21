@@ -10,8 +10,8 @@ class UserTest < ActiveSupport::TestCase
     )
   end
   
-  test "application is valid" do
-    assert @user.valid?, "application should be valid #{@user.errors.inspect}"
+  test "user is valid" do
+    assert @user.valid?, "user should be valid #{@user.errors.inspect}"
   end
   
   test "name should be present" do
