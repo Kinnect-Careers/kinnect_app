@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get '/signupchoose', to: 'static_pages#signupchoose'
   get '/signupusers', to: 'users#new'
   get '/signupcompanies', to: 'companies#new'
+  get '/users', to: 'static_pages#home'
+  get '/companies', to: 'static_pages#home'
+  get '/applications', to: 'static_pages#home'
   resources :applications
   resources :opportunities
   resources :companies

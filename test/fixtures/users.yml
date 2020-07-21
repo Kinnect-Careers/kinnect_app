@@ -1,9 +1,1 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-user1:
-  name: MyString
-  email: MyString
-
-user2:
-  name: MyString
-  email: MyString
