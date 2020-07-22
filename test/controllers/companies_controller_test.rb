@@ -2,19 +2,13 @@ require 'test_helper'
 
 class CompaniesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @company = Company.create(
-      image_url: "image1.jpg",
-      name: "A Company",
-      email: "company@company.com",
-      password: "lalalalal",
-      password_confirmation: "lalalalal"
-    )
+    @company = companies(:company1)
     @not_saved_company = Company.new(
       image_url: "image2.url",
       name: "A Company 2",
       email: "company@company2.com",
-      password: "lalalalal",
-      password_confirmation: "lalalalal"
+      password: "Pass8or$",
+      password_confirmation: "Pass8or$"
     )
   end
 
@@ -35,8 +29,8 @@ class CompaniesControllerTest < ActionDispatch::IntegrationTest
           email: @not_saved_company.email, 
           image_url: @not_saved_company.image_url, 
           name: @not_saved_company.name, 
-          password: "jjjjjjjjjj",
-          password_confirmation: "jjjjjjjjjj"
+          password: "Pass8or$",
+          password_confirmation: "Pass8or$"
         } 
       }
     end
@@ -60,7 +54,8 @@ class CompaniesControllerTest < ActionDispatch::IntegrationTest
         email: @company.email, 
         image_url: "new_image.jpg", 
         name: @company.name, 
-        password: @company.password 
+        password: "Pass8or$",
+        password_confirmation: "Pass8or$"
       } 
     }
     assert_redirected_to company_url(@company)

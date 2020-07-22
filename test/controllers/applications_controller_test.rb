@@ -4,7 +4,7 @@ class ApplicationsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @opportunity = opportunities(:opp1)
     @another_opp = opportunities(:opp2)
-    @user = users(:user1)
+    @user = users(:alex)
     @application = Application.create(
       opportunity: @opportunity, 
       user: @user
@@ -15,7 +15,7 @@ class ApplicationsControllerTest < ActionDispatch::IntegrationTest
     get applications_url
     assert_response :success
   end
-
+  
   test "should get new" do
     get new_application_url
     assert_response :success
@@ -40,7 +40,7 @@ class ApplicationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update application" do
-    patch application_url(@application), params: { application: { opportunity: @opportunity, user: users(:user2)} }
+    patch application_url(@application), params: { application: { opportunity: @opportunity, user: users(:jessie)} }
     assert_redirected_to application_url(@application)
   end
 

@@ -19,8 +19,6 @@ class User < ApplicationRecord
   validate :password_special_char
   validate :password_contains_number
   
-  
-  
   def password_uppercase
     return if !!password.match(/\p{Upper}/)
     errors.add :password, ' must contain at least 1 uppercase letter'
@@ -43,4 +41,9 @@ class User < ApplicationRecord
     errors.add :password, ' must contain at least one number'
   end
   
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
 end

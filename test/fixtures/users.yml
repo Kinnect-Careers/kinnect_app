@@ -1,10 +1,9 @@
-user1:
-  name: Aaaaaaaaa
-  email: aaaaaaa@aaaa.com
-  password_digest: jalsjkdilkajsdkljaklsdjilasjd
-
-user2:
-  name: Bbbbbbbbb
-  email: bbbbb@bbbb.com
-  password_digest: jalsjkdilkajsdkljaklsdjilasjd
+alex:
+  name: Alex Hannold
+  email: a@hanold.com
+  password_digest: <%= User.digest('Pass8or$')%>
   
+jessie:
+  name: Jessie Chen
+  email: j@chen.com
+  password_digest: <%= User.digest('Pass8or$')%>
