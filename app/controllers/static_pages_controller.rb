@@ -16,5 +16,7 @@ class StaticPagesController < ApplicationController
   
   def signupchoose
   end
-
+  
+  def choose_login
+  end
 end

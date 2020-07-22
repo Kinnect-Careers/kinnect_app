@@ -1,9 +1,22 @@
 alex:
   name: Alex Hannold
-  email: a@hanold.com
+  email: a@hannold.com
   password_digest: <%= User.digest('Pass8or$')%>
   
 jessie:
   name: Jessie Chen
   email: j@chen.com
   password_digest: <%= User.digest('Pass8or$')%>
+  
+rick:
+  name: Rick Nunes
+  email: sanunes.ricardo@gmail.com
+  password_digest: <%= User.digest('Pass8or$')%>
+  admin: true
+
+<% 50.times do |n| %>
+user_<%= n %>:
+  name: <%= "User #{n}" %>
+  email: <%= "user-#{n}@eg.com" %>
+  password_digest: <% User.digest('Pass8or$') %>
+<% end %>
