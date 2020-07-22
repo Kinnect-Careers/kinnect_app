@@ -49,9 +49,22 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     delete logout_user_path
     assert_not is_logged_in?
     assert_redirected_to root_url
+    # Simulating a user clicking logout in different browser
+    delete logout_user_path
     follow_redirect!
     assert_select "a[href=?]", login_user_path
     assert_select "a[href=?]", logout_user_path, count: 0
     assert_select "a[href=?]", user_path(@user), count: 0
+  end
+  
+  test "user login with remembering" do
+    login_as(@user, remember_me: '1')
+    assert_equal cookies["remember_token"], assigns(:user).remember_token
+  end
+  
+  test "login without remembering" do
+    login_as(@user, remember_me: '1')
+    login_as(@user, remember_me: '0')
+    assert cookies[:remember_token].blank?, "Token should be blank"
   end
 end

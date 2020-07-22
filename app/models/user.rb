@@ -1,17 +1,17 @@
 class User < ApplicationRecord
   has_many :application
   
+  attr_accessor :remember_token
+
   before_save { email.downcase! }
 
   validates :name, presence: true, 
                    length: { minimum: 4, maximum: 50}
-                   
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true,
                     length: { minimum: 7, maximum: 255 },
                     format: { with: EMAIL_REGEX },
                     uniqueness: true
-  
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
   validate :password_uppercase
@@ -45,5 +45,26 @@ class User < ApplicationRecord
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
+  end
+  
+  # Gets a random token
+  def User.new_token
+    SecureRandom.urlsafe_base64
+  end
+  
+  # Remembers user in db, used for persistent sessions
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
+  end
+  
+  # Checks if user has been given a token that matches the digest
+  def authenticated?(remember_token)
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)    
+  end
+  
+  def forget
+    update_attribute(:remember_digest, nil)
   end
 end
