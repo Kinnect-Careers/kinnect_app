@@ -1,8 +1,7 @@
 # Kinnect Careers App
 
-## Vagrant + Oracle Virtual Box
+## 1. Vagrant + Oracle Virtual Box
 ### Containerizing application environmemnt
-## 1
 First dowmload and install vagrant: https://www.vagrantup.com/downloads.html
 Download and install Oracle VM VirtualVox
 
