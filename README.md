@@ -2,12 +2,11 @@
 
 ## 1. Vagrant + Oracle Virtual Box
 ### Containerizing application environmemnt
-First dowmload and install vagrant: https://www.vagrantup.com/downloads.html
+First download and install vagrant: https://www.vagrantup.com/downloads.html \
 Download and install Oracle VM VirtualVox
 
-## 2
-In a designated directory, create a file named Vagrantfile
-You will need to be located in this directory in the future in order to activate vagrant
+## 2. In a designated directory, create a file named Vagrantfile
+You will need to be located in this directory in order to activate vagrant
 ``` Vagrantfile
 # Use version 2 of Vagrant config language
 Vagrant.configure("2") do |config|
@@ -28,7 +27,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-## 3 on command line do
+## 3. On the command line do
 ```
 # Vagrant will install the OS and manage it with VB
 vagrant up
@@ -36,7 +35,7 @@ vagrant up
 vagrant ssh
 ```
 
-## 4 in container do
+## 4. In the container do
 ```
 sudo apt-get update
 
@@ -79,14 +78,14 @@ sudo chown root:root /usr/bin/chromedriver
 sudo chmod +x /usr/bin/chromedriver
 ```
 
-## 5 configure git
+## 5. Configure git
 
-## 6 clone this repository 
+## 6. Clone this repository 
 ```
 git clone https://github.com/Kinnect-Careers/kinnect_app.git
 ```
 
-# Test if everything passes in your environment
+## 7. Test if everything passes in your environment
 ```
 cd kinnect_app
 # install all dependencies
