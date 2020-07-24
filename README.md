@@ -54,11 +54,11 @@ node --version
 
 # Register repo and install yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main | sudo tee /etc/apt/sources.list.d/yarn.list
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt update && sudo apt install -y yarn
 
 # Install ruby and rails
-cursl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash -
+curl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash -
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
 
