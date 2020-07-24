@@ -94,3 +94,8 @@ bundle install
 rails test
 # all tests should be GREEN
 ```
+
+## 8. Serve application by directing it towards port 3000
+```
+rails s -b 0.0.0.0
+```
