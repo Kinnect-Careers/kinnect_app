@@ -60,6 +60,9 @@ sudo apt update && sudo apt install -y yarn
 # Install ruby and rails
 curl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash -
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+
+# Ensures the shims are up-to-date and enables Bash command completion
+eval "$(rbenv init -)" 
 source ~/.bashrc
 
 rbenv install 2.6.3
