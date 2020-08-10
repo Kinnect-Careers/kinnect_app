@@ -1,4 +1,0 @@
-1|Audrey|Hepburn|1986
-2|George|Peppard|1991
-3|Patricia|Neal|1977
-4|Buddy|Ebsen|1995
