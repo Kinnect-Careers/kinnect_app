@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class UsersSignupTest < ActionDispatch::IntegrationTest
+  
+  setup do
+    ActionMailer::Base.deliveries.clear  
+  end
+  
   test "invalid signup" do
     get signupusers_path
     assert_no_difference 'User.count' do
@@ -24,15 +29,35 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
       post users_path, params: {
         user: {
           name:                     "Mr Example",
-          email:                    "example@examplary.com",
+          email:                    "examplejjjjj@examplary.com",
           password:                 "Pass8or!",
           password_confirmation:    "Pass8or!"
         }
       }
     end
+    assert_equal 1, ActionMailer::Base.deliveries.size
+    user = assigns(:user)
+    assert_not user.activated?
+    
+    # Trying to log in before activation
+    login_as(user)
+    assert_not is_logged_in?
+    
+    # Using invalid token
+    get edit_account_activation_path("invalid token", email: user.email)
+    assert_not is_logged_in?
+    
+    # Valid activation token, wrong email
+    get edit_account_activation_path(user.activation_token, email: 'notright@wrong.com')
+    assert_not is_logged_in?
+    
+    # Valid activation token and email
+    get edit_account_activation_path(user.activation_token, email: user.email)
+    assert user.reload.activated?
+    assert is_logged_in?
+    
     follow_redirect!
     assert_template 'users/show'
-    assert_not flash[:success].nil?
     assert is_logged_in?
   end
   

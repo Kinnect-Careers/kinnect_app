@@ -53,7 +53,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     # Simulating a user clicking logout in different browser
     delete logout_user_path
     follow_redirect!
-    assert_select "a[href=?]", login_choose_path
+    assert_select "a[href=?]", login_user_path
     assert_select "a[href=?]", logout_user_path, count: 0
     assert_select "a[href=?]", user_path(@user), count: 0
   end

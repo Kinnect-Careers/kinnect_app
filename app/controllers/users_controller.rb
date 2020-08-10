@@ -7,13 +7,14 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.where(activated: true).paginate(page: params[:page])
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    redirect_to root_url and return unless current_user?(@user)
   end
 
   # GET /users/new
@@ -32,10 +33,14 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        log_in @user
-        flash[:success] = "Welcome to Kinnect Careers!"
-        format.html { redirect_to @user }
-        format.json { render :show, status: :created, location: @user }
+        @user.send_activation_email
+        flash[:info] = 'Please check your email to activate your account'
+        format.html{ redirect_to root_url }
+        
+        # log_in @user
+        # flash[:success] = "Welcome to Kinnect Careers!"
+        # format.html { redirect_to @user }
+        # format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }

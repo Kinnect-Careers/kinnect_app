@@ -11,7 +11,9 @@ User.create!(
   email: "tp1590@nyu.edu",
   password: "Pass8or$",
   password_confirmation: "Pass8or$",
-  admin: true
+  admin: true,
+  activated: false,
+  activated_at: Time.zone.now
 )
 
 User.create!(
@@ -19,16 +21,20 @@ User.create!(
   email: "wc1672@nyu.edu",
   password: "Pass8or$",
   password_confirmation: "Pass8or$",
-  admin: true
+  admin: true,
+  activated: false,
+  activated_at: Time.zone.now
 )
 
-User.create!(
-  name: "Ricardo Nunes",
-  email: "sanunes.ricardo@gmail.com",
-  password: "Pass8or$",
-  password_confirmation: "Pass8or$",
-  admin: true
-)
+# User.create!(
+#   name: "Ricardo Nunes",
+#   email: "sanunes.ricardo@gmail.com",
+#   password: "Pass8or$",
+#   password_confirmation: "Pass8or$",
+#   admin: true,
+#   activated: true,
+#   activated_at: Time.zone.now
+# )
 
 100.times do |n|
   name = Faker::Name.name
@@ -38,6 +44,8 @@ User.create!(
     name: name,
     email: email,
     password: password,
-    password_confirmation: password
+    password_confirmation: password,
+    activated: true,
+    activated_at: Time.zone.now
   )
 end
