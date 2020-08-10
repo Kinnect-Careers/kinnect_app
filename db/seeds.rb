@@ -12,7 +12,7 @@ User.create!(
   password: "Pass8or$",
   password_confirmation: "Pass8or$",
   admin: true,
-  activated: false,
+  activated: true,
   activated_at: Time.zone.now
 )
 
@@ -22,7 +22,7 @@ User.create!(
   password: "Pass8or$",
   password_confirmation: "Pass8or$",
   admin: true,
-  activated: false,
+  activated: true,
   activated_at: Time.zone.now
 )
 
@@ -36,16 +36,16 @@ User.create!(
 #   activated_at: Time.zone.now
 # )
 
-100.times do |n|
-  name = Faker::Name.name
-  email = "user-#{n}@kinnectcareers.com"
-  password = "Pass8or$"
-  User.create!(
-    name: name,
-    email: email,
-    password: password,
-    password_confirmation: password,
-    activated: true,
-    activated_at: Time.zone.now
-  )
-end
+# 100.times do |n|
+#   name = Faker::Name.name
+#   email = "user-#{n}@kinnectcareers.com"
+#   password = "Pass8or$"
+#   User.create!(
+#     name: name,
+#     email: email,
+#     password: password,
+#     password_confirmation: password,
+#     activated: true,
+#     activated_at: Time.zone.now
+#   )
+# end
