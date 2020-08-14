@@ -20,7 +20,7 @@ end
 
 class ActionDispatch::IntegrationTest
   def login_as(user, password: 'Pass8or$', remember_me: '1')
-    post login_user_path, params: {
+    post login_path, params: {
       session: {
         email: user.email,
         password: password,

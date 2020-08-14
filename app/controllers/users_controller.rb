@@ -90,7 +90,7 @@ class UsersController < ApplicationController
       unless logged_in?
         store_location
         flash[:danger] = "Please log in."
-        redirect_to login_user_url
+        redirect_to login_url
       end
     end
     
