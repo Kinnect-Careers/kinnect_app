@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :application
+  has_many :skills, dependent: :destroy
   
   attr_accessor :remember_token, :activation_token, :reset_token
 

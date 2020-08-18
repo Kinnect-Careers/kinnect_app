@@ -99,4 +99,12 @@ class UserTest < ActiveSupport::TestCase
   test "authenticated? should return false for nil user.digest" do
     assert_not @user.authenticated?(:remember, '')
   end
+  
+  test "skills associated with user should be destroyed" do
+    @user.save
+    @user.skills.create!(title: "Skill E.g.", descriptor: "Desc E.g.")
+    assert_difference 'Skill.count', -1 do
+      @user.destroy  
+    end
+  end
 end

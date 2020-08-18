@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @skills = @user.skills.paginate(page: params[:page])
     redirect_to root_url and return unless current_user?(@user)
   end
 
@@ -84,14 +85,6 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    end
-    
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
     end
     
     def correct_user

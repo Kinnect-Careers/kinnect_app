@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+skill1:
+  title: Skill 1
+  descriptor: Desc 1
+  created_at: <%= 2.days.ago %>
+  user: alex
+  
+skill2:
+  title: Skill 2
+  descriptor: Desc 2
+  created_at: <%= 1.days.ago %>
+  user: alex
+
+skill2:
+  title: Skill 3
+  descriptor: Desc 3
+  created_at: <%= 10.hours.ago %>
+  user: alex
+
+most_recent:
+  title: Most recent skill
+  descriptor: Most recent descriptor
+  created_at: <%= 10.minutes.ago %>
+  user: alex
+
+<% 50.times do |n| %>
+skill_<%= n %>:
+  title: <%= Faker::Lorem.sentence(word_count: 2) %>
+  descriptor: <%= Faker::Lorem.sentence(word_count: 20) %>
+  created_at: <%= 10.days.ago %>
+  user: alex
+<% end %>
