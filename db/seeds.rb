@@ -51,8 +51,27 @@ User.create!(
 end
 
 users= User.order(:created_at).take(10)
-10.times do
+10.times do |n|
   title = Faker::Lorem.sentence(word_count: 2)
   descriptor = Faker::Lorem.sentence(word_count: 20)
-  users.each { |user| user.skills.create!(title: title, descriptor: descriptor) }
+  company = Faker::Lorem.sentence(word_count: 3)
+  roles = Faker::Lorem.sentence(word_count: 150)
+  users.each do |user| 
+    user.skills.create!(title: title, descriptor: descriptor) 
+    user.experiences.create!(
+      company: company, 
+      started_at: (n+10).months.ago, 
+      ended_at: (n+5).months.ago,
+      roles: roles
+    )
+    company = Faker::Lorem.sentence(word_count: 3)
+    roles = Faker::Lorem.sentence(word_count: 150)
+    user.experiences.create!(
+      company: company, 
+      started_at: (n+4).months.ago, 
+      roles: roles
+    )
+  end
 end
+
+

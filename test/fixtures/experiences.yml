@@ -1,0 +1,24 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+  
+<% 3.times do |n| %>
+experience_<%= n %>:
+  company: <%= Faker::Lorem.sentence(word_count: 3) %>
+  started_at: <%= (n+1).years.ago %>
+  ended_at: <%= n.months.ago %>
+  current: false
+  roles: <%= Faker::Lorem.sentence(word_count: 100) %>)
+  user: alex
+  created_at: <%= n.days.ago %>
+<% end %>
+
+<% 3.times do |n| %>
+experience_<%= n+3 %>:
+  company: <%= Faker::Lorem.sentence(word_count: 3) %>
+  started_at: <%= (n+1).months.ago %>
+  ended_at: <%= nil %>
+  current: true
+  roles: <%= Faker::Lorem.sentence(word_count: 100) %>)
+  user: jessie
+  created_at: <%= n.hours.ago %>
+<% end %>

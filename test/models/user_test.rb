@@ -107,4 +107,15 @@ class UserTest < ActiveSupport::TestCase
       @user.destroy  
     end
   end
+  
+  test "experiences associated with user should be destroyed" do
+    @user.save
+    @user.experiences.create!(
+      company: "Lorem", 
+      started_at: 10.months.ago,
+      ended_at: 6.months.ago)
+    assert_difference 'Experience.count', -1 do
+      @user.destroy
+    end
+  end
 end

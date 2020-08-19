@@ -18,4 +18,13 @@
       <%= will_paginate @skills %>
     <% end %>
   </div>
+  <div class="col-md-8">
+    <% if @user.experiences.any? %>
+      <h3>Experiences (<%= @user.experiences.count %>)</h3>
+      <ol class="experiences">
+        <%= render @experiences %>
+      </ol>
+      <%= will_paginate @experiences %>
+    <% end %>
+  </div>
 </div>

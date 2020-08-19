@@ -20,5 +20,11 @@ class UserProfileTest < ActionDispatch::IntegrationTest
       assert_match skill.title, response.body
       assert_match skill.descriptor, response.body
     end
+    
+    # assert_match @user.experiences.count.to_s, response.body
+    # @user.experiences.paginate(page: 1).each do |experience|
+    #   assert_match experience.title, response.body
+    #   assert_match experience.descriptor, response.body
+    # end
   end
 end

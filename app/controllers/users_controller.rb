@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @skills = @user.skills.paginate(page: params[:page])
+    @experiences = @user.experiences.paginate(page: params[:page])
     redirect_to root_url and return unless current_user?(@user)
   end
 
