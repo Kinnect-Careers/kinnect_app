@@ -21,10 +21,16 @@ class UserProfileTest < ActionDispatch::IntegrationTest
       assert_match skill.descriptor, response.body
     end
     
-    # assert_match @user.experiences.count.to_s, response.body
-    # @user.experiences.paginate(page: 1).each do |experience|
-    #   assert_match experience.title, response.body
-    #   assert_match experience.descriptor, response.body
-    # end
+    assert_match @user.experiences.count.to_s, response.body
+    @user.experiences.paginate(page: 1).each do |experience|
+      assert_match experience.company, response.body
+      assert_match experience.started_at.strftime("%B")[0..2] + "/" + experience.started_at.year.to_s, response.body
+      if experience.current?
+        assert_match " - Present", response.body
+      else
+        assert_match experience.ended_at.strftime("%B")[0..2] + "/" + experience.ended_at.year.to_s, response.body
+      end
+      assert_match experience.roles, response.body
+    end
   end
 end

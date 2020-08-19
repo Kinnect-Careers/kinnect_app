@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   resources :account_activation, only: [:edit]
   resources :password_resets,    only: [:new, :create, :edit, :update]
   resources :skills,             only: [:create, :destroy]
+  resources :experiences,        only: [:create, :destroy]
 end
