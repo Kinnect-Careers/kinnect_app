@@ -1,0 +1,18 @@
+<h2>Skills</h2>
+<% if @skill_items.any? %>
+  <ol class="skills">
+    <%= render @skill_items %>
+  </ol>
+  <%= will_paginate @skill_items, params: { controller: :static_pages, action: :home } %>
+<% else %>
+  No skills have been added
+<% end %>
+<h2>Experiences</h2>
+<% if @experience_items.any? %>
+  <ol class="experiences">
+    <%= render @experience_items %>
+  </ol>
+  <%= will_paginate @experience_items, params: { controller: :static_pages, action: :home } %>
+<% else %>
+  No experiences have been added
+<% end %>

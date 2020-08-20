@@ -103,6 +103,14 @@ class User < ApplicationRecord
     reset_sent_at < 15.minutes.ago
   end
   
+  def skills_feed
+    skills
+  end
+  
+  def experiences_feed
+    experiences
+  end
+  
   private
 
     def create_activation_digest

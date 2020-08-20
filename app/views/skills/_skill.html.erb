@@ -1,9 +1,11 @@
 <li id="skill-<%= skill.id %>">
-  <%= link_to gravatar_for(skill.user, size: 50), skill.user %>
-  <span class="user"><%= link_to skill.user.name, skill.user %></span>
-  <span class="title"><%= skill.title %></span>
-  <span class="descriptor"><%= skill.descriptor %></span>
-  <span class="timestamp">
-    Added <%= time_ago_in_words(skill.created_at) %> ago
+  <span class="title">
+    <%= skill.title %>
+    <% if current_user?(skill.user) %>
+        <%= link_to "delete", skill, method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
+  </span>
+  <span class="descriptor">
+    <%= skill.descriptor %>
   </span>
 </li>

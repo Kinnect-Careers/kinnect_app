@@ -1,15 +1,22 @@
 <li id="experience-<%= experience.id %>">
-  <span class="company"><%= experience.company %></span>
-  <p><%= experience.started_at.strftime("%B")[0..2] + "/" + experience.started_at.year.to_s  %>
-    <% if experience.current? %>
-      <span> - Present</span>
-    <% else %>
-      <span> - <%= experience.ended_at.strftime("%B")[0..2] + "/" + experience.ended_at.year.to_s  %></span>
-    <% end %>
-  </p>
-  <% if experience.roles %>
-    <span class="roles"> 
-      <%= experience.roles %>
+  <div class="experience-header">
+    <span class="company"><%= experience.company %></span>
+    <span class="period"><%= experience.started_at.strftime("%B")[0..2] + "/" + experience.started_at.year.to_s  %>
+      <% if experience.current? %>
+        <span> - Present</span>
+      <% else %>
+        <span> - <%= experience.ended_at.strftime("%B")[0..2] + "/" + experience.ended_at.year.to_s  %></span>
+      <% end %>
     </span>
-  <% end %>
+    <% if current_user?(experience.user) %>
+        <%= link_to "delete", experience, method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
+  </div>
+  <div class="roles">
+    <% if experience.roles %>
+      <span> 
+        <%= experience.roles %>
+      </span>
+    <% end %>
+  </div>
 </li>

@@ -1,3 +1,23 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.users {
+  list-style: none;
+  margin: 0;
+
+  img {
+    clip-path: circle(50% at 50% 50%);
+  }
+
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid rbga(12, 12, 12, 10);
+  }
+}
+
+.user_info {
+  img {
+    clip-path: circle(50% at 50% 50%)
+  }
+}

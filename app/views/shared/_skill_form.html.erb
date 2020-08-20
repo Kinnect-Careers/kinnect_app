@@ -1,0 +1,10 @@
+<%= form_with(model: @skill, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.label :title, "Title" %>
+    <%= f.text_area :title, placeholder: "E.g. Microsoft Excel" %>
+    <%= f.label :descriptor, "Descriptor" %>
+    <%= f.text_area :descriptor, placeholder: "E.g. Sheets and Calculations" %>
+  </div>
+  <%= f.submit "Add Skill", class: "btn btn-primary" %> 
+<% end %>

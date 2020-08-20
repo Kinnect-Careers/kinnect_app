@@ -1,0 +1,16 @@
+<%= form_with(model: @experience, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.label :company, "Company Name" %>
+    <%= f.text_field :company, placeholder: "E.g. Oranges and Apples" %>
+    <%= f.label :started_at, "Start Date" %>
+    <%= f.date_field :started_at %>
+    <%= f.label :ended_at, "End Date" %>
+    <%= f.date_field :ended_at %>
+    <%= f.label :current, "Current" %>
+    <%= f.check_box :current %>
+    <%= f.label :roles, "Roles" %>
+    <%= f.text_area :roles, placeholder: "" %>
+  </div>
+  <%= f.submit "Add Experience", class: "btn btn-primary" %> 
+<% end %>
